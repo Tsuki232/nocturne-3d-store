@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A0A0C" />
+    <title>NOCTURNE — Serie Volta</title>
+    <meta
+      name="description"
+      content="Experiencia de compra 3D en tiempo real. Cristal, neón y gravedad cero."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <!-- ────────────────────────────────────────────────────────────
+         El lienzo 3D. Un único canvas, 100% del viewport, fixed.
+         Todo lo demás en este documento es andamiaje: scroll, carga
+         y accesibilidad. La interfaz real se renderiza en WebGL.
+    ───────────────────────────────────────────────────────────── -->
+    <canvas id="gl"></canvas>
+
+    <!-- Proxy de scroll: da altura real al documento para que el
+         navegador genere scroll nativo (inercia, trackpad, teclado).
+         La altura la fija SceneDirector según el nº de secciones. -->
+    <div id="scroll-proxy" aria-hidden="true"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" role="status" aria-live="polite">
+      <div class="pre-inner">
+        <div class="pre-mark">NOCTURNE</div>
+        <div class="pre-bar"><i></i></div>
+        <div class="pre-pct">0%</div>
+      </div>
+    </div>
+
+    <!-- Contenido semántico real: invisible en pantalla, pero indexable
+         y navegable por lectores de pantalla. El canvas es decorativo. -->
+    <main id="a11y">
+      <h1>NOCTURNE — Serie Volta</h1>
+      <section>
+        <h2>Volta One</h2>
+        <p>
+          Zapatilla de perfil bajo con entresuela de policarbonato translúcido y
+          chasis de cromo pulido. Cámara de aire visible. 289 €.
+        </p>
+      </section>
+      <section>
+        <h2>Catálogo</h2>
+        <ul>
+          <li>Volta One — Obsidiana / Cian — 289 €</li>
+          <li>Volta One — Obsidiana / Violeta — 289 €</li>
+          <li>Volta Lux — Cromo espejo — 349 €</li>
+          <li>Volta Mono — Negro anodizado — 259 €</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Configurador</h2>
+        <p>Cuatro acabados disponibles: Cian, Violeta, Cromo y Mono.</p>
+      </section>
+    </main>
+
+    <noscript>
+      <div class="noscript">
+        Esta experiencia necesita JavaScript y WebGL2. El catálogo completo está
+        disponible en la versión de texto.
+      </div>
+    </noscript>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
